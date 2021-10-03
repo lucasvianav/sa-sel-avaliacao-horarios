@@ -11,6 +11,23 @@ ENG_NAME = [
     "engenharia eletrica",
 ]
 
+ELETR_NAME = [
+    "eletrônica",
+    "eletronica",
+    "eletro",
+]
+
+AUTOMA_NAME = [
+    "energia",
+    "autom",
+    "energia e autom",
+    "automação",
+    "automacao",
+    "sistemas de energia",
+    "sistemas",
+    "sis energia e autom",
+]
+
 
 def has_same_parity(x, y):
     x = int(x)
