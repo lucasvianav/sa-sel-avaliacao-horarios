@@ -1,11 +1,11 @@
 import csv
 from datetime import date
 from functools import reduce
-from logging import exception
 from re import search, sub
 
 from bs4 import BeautifulSoup
 from requests import get
+from tqdm import tqdm
 
 from config import sheets
 from util import (
@@ -34,6 +34,8 @@ info = []
 
 # for each period in the sheet
 for sh in current_sheets:
+    print(sh.title + ":")
+
     # current period's list of courses to be researched
     current_period = [[e.strip() for e in c] for c in sh.get_all_values()]
 
@@ -41,7 +43,10 @@ for sh in current_sheets:
     current_period.pop(0)
 
     # for each course in the current period
-    for course in current_period:
+    # for course in current_period:
+    for index in tqdm(range(len(current_period)), desc="Processando..."):
+        course = current_period[index]
+
         # fetches Júpiter's source code
         r = get(JUPITER_URI + course[0])
         html = r.text
